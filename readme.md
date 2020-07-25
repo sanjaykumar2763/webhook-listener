@@ -14,4 +14,4 @@ This is a node application. So you need to have **node** installed.
 
 ## **Configuration**
 
-**WH_LISTENER_SCRIPTS_PATH**: Base location of the scripts. Set this value to the base location of the scripts. Else the default value would be **/home/\$USER/wh_scripts/**
+**WH_LISTENER_SCRIPTS_PATH**: Base location of the scripts. Set this value to the base location of the scripts. Else the default value would be **/var/wh_scripts/**
