@@ -10,7 +10,7 @@ This is a node application. So you need to have **node** installed.
 
 1. Clone this repository
 2. Run **npm i**
-3. node **bin/www** or If you are using pm2, you can run **pm2 bin/www**
+3. node **bin/www** or If you are using pm2, you can run **pm2 start bin/www --name webhook-listener**
 
 ## **Configuration**
 
