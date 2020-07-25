@@ -11,7 +11,15 @@ router.get("/health", function (req, res, next) {
   res.json({ status: "running" });
 });
 
-router.get("/scripts/:scriptName", async (req, res, next) => {
+router.post("/scripts/:scriptName", async (req, res, next) => {
+  const {
+    body: { ref },
+  } = req;
+
+  if (!ref.endsWith(req.query.branch)) {
+    return res.status(204).end();
+  }
+
   const { scriptName } = req.params;
 
   console.log("Request to execute script ", scriptName);
@@ -24,11 +32,13 @@ router.get("/scripts/:scriptName", async (req, res, next) => {
     const { stdout } = await execFile("sh", [scriptPath]);
 
     console.log(`Response for executing ${scriptPath}: ${stdout}`);
+
+    return res.status(201).end();
   } catch (e) {
     console.error(`Error while running ${scriptPath}: `, e);
-  }
 
-  res.end();
+    return res.status(500).end();
+  }
 });
 
 module.exports = router;
