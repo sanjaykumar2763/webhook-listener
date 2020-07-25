@@ -4,9 +4,8 @@ const util = require("util");
 const execFile = util.promisify(require("child_process").execFile);
 const exec = util.promisify(require("child_process").exec);
 
-const currentUser = process.env.USER;
 const webhookListenerScriptsLocation =
-  process.env.WH_LISTENER_SCRIPTS_PATH || `/home/${currentUser}/wh_scripts/`;
+  process.env.WH_LISTENER_SCRIPTS_PATH || `/var/wh_scripts/`;
 
 router.get("/health", function (req, res, next) {
   res.json({ status: "running" });
